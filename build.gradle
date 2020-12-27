@@ -6,6 +6,8 @@ buildscript {
     }
     def localMavenDir = file(moduleConfigProps.localMavenPath)
 
+    ext.kotlin_version = '1.4.20'
+
     repositories {
         google()
         jcenter()

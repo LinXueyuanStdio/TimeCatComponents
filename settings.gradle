@@ -1,5 +1,6 @@
 include ':app'
 include ':component:sdk'
+include ':component:setting'
 include ':component:ui'
 
 rootProject.name = "TimeCatComponents"
