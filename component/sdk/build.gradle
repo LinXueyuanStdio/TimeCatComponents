@@ -1,0 +1,35 @@
+apply from: "${project.rootDir}/gradle/library_header.gradle"
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.timecat["component-SelfArms"]
+    api rootProject.ext.timecat["component-SelfFont"]
+    api rootProject.ext.androidx_lib["appcompat"]
+    api rootProject.ext.androidx_lib["design"]
+    api rootProject.ext.androidx_lib["core"]
+
+    api 'com.jaredrummler:android-device-names:1.1.5'
+    api 'com.blankj:utilcodex:1.28.4'
+    api rootProject.ext.dependencies["joda-time"]
+    api rootProject.ext.dependencies["rxandroid"]
+
+    api rootProject.ext.dependencies["retrofit-adapter-rxjava"]
+    api rootProject.ext.dependencies["retrofit-converter-gson"]
+    api rootProject.ext.dependencies["retrofit-url-manager"]
+
+    api(rootProject.ext.dependencies["glide"]) {
+        exclude module: 'support-v4'
+    }
+    kapt(rootProject.ext.dependencies["glide-compiler"]) {
+        exclude module: 'jsr305'
+    }
+
+    //腾讯 移动统计
+    api 'com.qq.mta:mta:3.4.2'
+    api 'com.tencent.mid:mid:3.73-release'
+}
+
+apply from: "${project.rootDir}/gradle/library_tail.gradle"
