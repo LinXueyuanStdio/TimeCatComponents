@@ -1,4 +1,5 @@
 include ':app'
+include ':component:router'
 include ':component:sdk'
 include ':component:setting'
 include ':component:ui'
