@@ -18,10 +18,6 @@ package com.timecat.component.commonsdk.core;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.annotation.Keep;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
-
 import com.blankj.utilcode.util.Utils;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
@@ -34,6 +30,9 @@ import com.timecat.component.commonsdk.image.Strategy.CommonGlideImageLoaderStra
 
 import java.util.List;
 
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import timber.log.Timber;
 
