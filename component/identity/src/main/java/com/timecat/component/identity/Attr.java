@@ -1,4 +1,4 @@
-package com.timecat.component.ui;
+package com.timecat.component.identity;
 
 import android.content.Context;
 import android.content.res.Resources;
