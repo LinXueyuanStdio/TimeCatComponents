@@ -24,6 +24,10 @@ import com.timecat.identity.skin.CustomSDCardLoader;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import skin.support.SkinCompatManager;
+import skin.support.app.SkinAppCompatViewInflater;
+import skin.support.app.SkinCardViewInflater;
+import skin.support.constraint.app.SkinConstraintViewInflater;
+import skin.support.design.app.SkinMaterialViewInflater;
 
 /**
  * ================================================
@@ -48,10 +52,10 @@ public class AppLifecyclesImpl implements AppLifecycles {
                          .addStrategy(new CustomSDCardLoader())
                          //Material Component 组件已经够用，样式好看
                          //拦截后的样式不好看，所以去掉拦截器 Inflater
-                         //                         .addInflater(new SkinAppCompatViewInflater())           // 基础控件换肤初始化
-                         //                         .addInflater(new SkinMaterialViewInflater())            // material design 控件换肤初始化[可选]
-                         //                         .addInflater(new SkinConstraintViewInflater())          // ConstraintLayout 控件换肤初始化[可选]
-                         //                         .addInflater(new SkinCardViewInflater())                // CardView v7 控件换肤初始化[可选]
+                         .addInflater(new SkinAppCompatViewInflater())           // 基础控件换肤初始化
+                         .addInflater(new SkinMaterialViewInflater())            // material design 控件换肤初始化[可选]
+                         .addInflater(new SkinConstraintViewInflater())          // ConstraintLayout 控件换肤初始化[可选]
+                         .addInflater(new SkinCardViewInflater())                // CardView v7 控件换肤初始化[可选]
                          .setSkinWindowBackgroundEnable(true)                   // 关闭windowBackground换肤，默认打开[可选]
                          .setSkinAllActivityEnable(false) // 不是所有的activity都要，比如插件里的 Activity
                          .loadSkin();
