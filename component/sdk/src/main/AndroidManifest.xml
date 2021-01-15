@@ -1,11 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.timecat.component.commonsdk">
-    <!--TODO 1.4、配置IM SDK需要的权限-->
     <!--网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 监听网络的变化 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 设备休眠 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -20,24 +19,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application>
-        <!--TODO 集成：1.5、配置IM SDK需要的广播和服务-->
-        <!--<receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="cn.bmob.action.RECONNECT"/>-->
-        <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>-->
-        <!--<action android:name="android.intent.action.BOOT_COMPLETED"/>-->
-        <!--<action android:name="android.intent.action.USER_PRESENT"/>-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--<service-->
-        <!--android:name="cn.bmob.newim.core.service.BmobIMService"-->
-        <!--android:process=":bmobcore"/>-->
-        <!--<service-->
-        <!--android:name="cn.bmob.newim.core.service.NotifyService"-->
-        <!--android:process=":bmobcore"/>-->
-        <!--<service android:name="cn.bmob.newim.core.service.ReConnectService"/>-->
-        <!--<service android:name="cn.bmob.newim.core.service.HeartBeatService"/>-->
         <provider
             android:name="com.timecat.component.commonsdk.TimeCatFileProvider"
             android:authorities="${applicationId}.file.provider"
@@ -50,9 +31,5 @@
         <meta-data
             android:name="com.timecat.component.commonsdk.core.GlobalConfiguration"
             android:value="ConfigModule" />
-        <!--TODO 集成：1.3、配置Bmob平台的应用密钥-->
-        <meta-data
-            android:name="Bmob_APP_KEY"
-            android:value="00be69091a9e5d9d01cc1a1897bce51b" />
     </application>
 </manifest>

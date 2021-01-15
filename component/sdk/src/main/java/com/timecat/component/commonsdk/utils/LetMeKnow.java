@@ -1,11 +1,10 @@
 package com.timecat.component.commonsdk.utils;
 
-import com.tencent.stat.StatService;
 import com.timecat.component.commonsdk.utils.override.LogUtil;
 import com.timecat.extend.arms.BaseApplication;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
-import java.util.Properties;
 
 public class LetMeKnow {
 
@@ -153,8 +152,8 @@ public class LetMeKnow {
      * MobclickAgent.onEvent(mContext,"Forward");
      */
     public static void report(String eventId) {
-        LogUtil.se("trace " + eventId);
-        StatService.trackCustomEvent(BaseApplication.getContext(), eventId, eventId);
+        LogUtil.sd("trace " + eventId);
+        MobclickAgent.onEvent(BaseApplication.getContext(), eventId);
     }
 
     /**
@@ -165,26 +164,26 @@ public class LetMeKnow {
      * map.put("quantity","3");
      * MobclickAgent.onEvent(mContext, "purchase", map);
      */
-    public static void report(String eventId, Properties map) {
-        LogUtil.se("trace " + eventId);
-        StatService.trackCustomKVEvent(BaseApplication.getContext(), eventId, map);
+    public static void report(String eventId, HashMap<String, String> map) {
+        LogUtil.sd("trace " + eventId);
+        MobclickAgent.onEvent(BaseApplication.getContext(), eventId, map);
     }
 
     public static void reportMain(String eventId) {
-        LogUtil.se("trace " + eventId);
-        Properties map = new Properties();
+        LogUtil.sd("trace " + eventId);
+        HashMap<String, String> map = new HashMap<>();
         map.put(eventId, eventId);
-        StatService.trackCustomKVEvent(BaseApplication.getContext(), "main", map);
+        MobclickAgent.onEvent(BaseApplication.getContext(), "main", map);
     }
 
     public static void report(String eventId, String value) {
-        LogUtil.se("trace " + eventId);
-        StatService.trackCustomEvent(BaseApplication.getContext(), eventId, value);
+        LogUtil.sd("trace " + eventId);
+        MobclickAgent.onEvent(BaseApplication.getContext(), eventId, value);
     }
 
     public static void report(String eventId, boolean value) {
-        LogUtil.se("trace " + eventId);
-        StatService.trackCustomEvent(BaseApplication.getContext(), eventId, String.valueOf(value));
+        LogUtil.sd("trace " + eventId);
+        MobclickAgent.onEvent(BaseApplication.getContext(), eventId, String.valueOf(value));
     }
 
     /**
@@ -201,8 +200,6 @@ public class LetMeKnow {
      * MobclickAgent.onEventValue(this, "music", map_value, duration);
      */
     public static void onEventValue(String id, HashMap<String, String> map, int value) {
-//        MobclickAgent.onEventValue(mContext, id, map, value);
+        MobclickAgent.onEventValue(BaseApplication.getContext(), id, map, value);
     }
-
-
 }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="net_error_10001">没有网络</string>
-    <string name="net_error_10002">网络连接超时</string>
-    <string name="net_error_10003">数据解析失败</string>
-</resources>
