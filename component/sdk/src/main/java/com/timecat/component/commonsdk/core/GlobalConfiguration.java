@@ -23,8 +23,12 @@ import android.preference.PreferenceManager;
 import com.blankj.utilcode.util.Utils;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
+import com.jess.arms.http.log.RequestInterceptor;
 import com.jess.arms.integration.ConfigModule;
 import com.timecat.component.commonsdk.BuildConfig;
+import com.timecat.component.commonsdk.http.Api;
+import com.timecat.component.commonsdk.http.SSLSocketClient;
+import com.timecat.component.commonsdk.image.Strategy.CommonGlideImageLoaderStrategy;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
@@ -52,31 +56,31 @@ public class GlobalConfiguration implements ConfigModule {
 
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
-//        if (!BuildConfig.LOG_DEBUG) {
-//            //Release 时,让框架不再打印 Http 请求和响应的信息
-//            builder.printHttpLogLevel(RequestInterceptor.Level.NONE);
-//        }
-//        builder.baseurl(Api.APP_DOMAIN)
-//                .imageLoaderStrategy(new CommonGlideImageLoaderStrategy())
-//                .globalHttpHandler(new GlobalHttpHandlerImpl(context))
-//                .responseErrorListener(new ResponseErrorListenerImpl())
-//                .gsonConfiguration((context1, gsonBuilder) -> {//这里可以自己自定义配置Gson的参数
-//                    gsonBuilder
-//                            .serializeNulls()//支持序列化null的参数
-//                            .enableComplexMapKeySerialization();//支持将序列化key为object的map,默认只能序列化key为string的map
-//                })
-//                .okhttpConfiguration((context12, builder1) -> {
-//                    builder1.sslSocketFactory(
-//                            SSLSocketClient.getSSLSocketFactory(),
-//                            SSLSocketClient.getTrustManager());
-//                    builder1.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
-//                    //让 Retrofit 同时支持多个 BaseUrl 以及动态改变 BaseUrl. 详细使用请方法查看 https://github.com/JessYanCoding/RetrofitUrlManager
-//                    RetrofitUrlManager.getInstance().with(builder1);
-//                })
-//                .rxCacheConfiguration((context1, rxCacheBuilder) -> {//这里可以自己自定义配置RxCache的参数
-//                    rxCacheBuilder.useExpiredDataIfLoaderNotAvailable(true);
-//                    return null;
-//                });
+        if (!BuildConfig.LOG_DEBUG) {
+            //Release 时,让框架不再打印 Http 请求和响应的信息
+            builder.printHttpLogLevel(RequestInterceptor.Level.NONE);
+        }
+        builder.baseurl(Api.APP_DOMAIN)
+                .imageLoaderStrategy(new CommonGlideImageLoaderStrategy())
+                .globalHttpHandler(new GlobalHttpHandlerImpl(context))
+                .responseErrorListener(new ResponseErrorListenerImpl())
+                .gsonConfiguration((context1, gsonBuilder) -> {//这里可以自己自定义配置Gson的参数
+                    gsonBuilder
+                            .serializeNulls()//支持序列化null的参数
+                            .enableComplexMapKeySerialization();//支持将序列化key为object的map,默认只能序列化key为string的map
+                })
+                .okhttpConfiguration((context12, builder1) -> {
+                    builder1.sslSocketFactory(
+                            SSLSocketClient.getSSLSocketFactory(),
+                            SSLSocketClient.getTrustManager());
+                    builder1.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
+                    //让 Retrofit 同时支持多个 BaseUrl 以及动态改变 BaseUrl. 详细使用请方法查看 https://github.com/JessYanCoding/RetrofitUrlManager
+                    RetrofitUrlManager.getInstance().with(builder1);
+                })
+                .rxCacheConfiguration((context1, rxCacheBuilder) -> {//这里可以自己自定义配置RxCache的参数
+                    rxCacheBuilder.useExpiredDataIfLoaderNotAvailable(true);
+                    return null;
+                });
     }
 
     @Override
