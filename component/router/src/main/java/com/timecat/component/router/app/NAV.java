@@ -156,6 +156,12 @@ public class NAV {
         return ServiceManager.get(tClass);
     }
 
+    @Nullable
+    @MainThread
+    public static <T> T service(Class<T> tClass, String path) {
+        return ServiceManager.get(tClass, path);
+    }
+
     public static void inject(Object it) {
         Component.inject(it);
     }
