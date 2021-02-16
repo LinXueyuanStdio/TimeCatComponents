@@ -21,7 +21,6 @@ import android.content.Context;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.integration.ConfigModule;
-import com.timecat.component.router.BuildConfig;
 import com.xiaojinzi.component.Component;
 import com.xiaojinzi.component.Config;
 import com.xiaojinzi.component.impl.application.ModuleManager;
@@ -99,7 +98,7 @@ public class GlobalConfiguration implements ConfigModule {
                               // 但是这个依赖 optimizeInit(true) 才会生效
                               .autoRegisterModule(true) // 1.7.9+
                               .build();
-        Component.init(BuildConfig.LOG_DEBUG, config);
+        Component.init(RouteDebug.debug, config);
         // 如果你依赖了 rx 版本,需要配置这句代码,否则删除这句
         //        RxErrorIgnoreUtil. ignoreError();
         // 注册其他业务模块,注册的字符串是上面各个业务模块配置在 build.gradle 中的 HOST
@@ -108,7 +107,7 @@ public class GlobalConfiguration implements ConfigModule {
         // 如果你同时也打开了开关 autoRegisterModule(true), 那么这句代码也可省略了, 因为初始化的时候自动帮你注册了
         // ModuleManager.getInstance().autoRegister(); // 1.7.9+
         // 你也可以让框架
-        if (BuildConfig.LOG_DEBUG) {
+        if (RouteDebug.debug) {
             // 框架还带有检查重复的路由和重复的拦截器等功能,在 `debug` 的时候开启它
             ModuleManager.getInstance().check();
         }
