@@ -25,7 +25,7 @@ dependencies {
     api rootProject.ext.androidx_lib["core"]
 
     api 'com.jaredrummler:android-device-names:1.1.5'
-    api 'com.blankj:utilcodex:1.28.4'
+    api 'com.blankj:utilcodex:1.29.0'
     api rootProject.ext.dependencies["joda-time"]
     api rootProject.ext.dependencies["rxandroid"]
 
