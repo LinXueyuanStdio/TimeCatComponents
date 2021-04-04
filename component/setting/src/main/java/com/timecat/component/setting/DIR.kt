@@ -40,5 +40,16 @@ enum class DIR(val dirName: String, val descName: String) {
     Comic("Comic", "漫画文件"),
     Subscribe("Subscribe", "订阅文件"),
     NovelSource("NovelSource", "小说书源管理文件"),
+    Database("Database", "数据库符文对应的文件"),
+
+    doc("doc", "说明文档"),
+    files("files", "统一的资源文件夹。所有标准文件夹和拓展文件夹都放在这里"),
+    timecat(".timecat", "时光猫大本营。时光猫符文数据库、用户设置等"),
+
+    ;
+
+    override fun toString(): String {
+        return dirName
+    }
 }
 

@@ -11,6 +11,7 @@ import java.util.*
  * @email linxy59@mail2.sysu.edu.cn
  * @date 2020/5/26
  * @description 规范应用的文件管理
+ * 依赖关系 PATH <- DIR,FILE
  * 分区：私有：仅自己使用，卸载后删除
  *      共享：可分享给其他应用
  * 场景：
@@ -42,7 +43,7 @@ object PATH {
      */
     @JvmOverloads
     fun of(dir: DIR, filename: String = random()): String {
-        return "${dir.dirName}/$filename"
+        return "${dir.dirName}${File.separator}$filename"
     }
 
     fun of(prefix: String, child: String): Uri {
@@ -90,7 +91,14 @@ object PATH {
         dir: DIR = DIR.Cache,
         filename: String = random()
     ): Uri {
-        return of(over(context), of(dir, filename))
+        return overOf(context, of(dir, filename))
+    }
+
+    fun overOf(
+        context: Context = BaseApplication.getContext(),
+        filename: String = random()
+    ): Uri {
+        return of(over(context), filename)
     }
 
     fun underOf(
@@ -99,15 +107,6 @@ object PATH {
         filename: String = random()
     ): Uri {
         return of(under(context), of(dir, filename))
-    }
-
-    /**
-     * 随机生成的临时文件
-     *
-     * /storage/emulated/0/Android/data/<PackageName>/files/Temp/uuid.emp
-     */
-    fun randomTemp(): Uri {
-        return overOf(dir = DIR.Temp, filename = "${random()}.tmp")
     }
 
 }
