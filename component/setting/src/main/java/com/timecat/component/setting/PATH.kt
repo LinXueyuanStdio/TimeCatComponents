@@ -46,8 +46,8 @@ object PATH {
         return "${dir.dirName}${File.separator}$filename"
     }
 
-    fun of(prefix: String, child: String): Uri {
-        return Uri.fromFile(File(prefix, child))
+    fun of(prefix: String, child: String): File {
+        return File(prefix, child)
     }
 
     fun random(): String {
@@ -90,14 +90,14 @@ object PATH {
         context: Context = BaseApplication.getContext(),
         dir: DIR = DIR.Cache,
         filename: String = random()
-    ): Uri {
+    ): File {
         return overOf(context, of(dir, filename))
     }
 
     fun overOf(
         context: Context = BaseApplication.getContext(),
         filename: String = random()
-    ): Uri {
+    ): File {
         return of(over(context), filename)
     }
 
@@ -105,7 +105,7 @@ object PATH {
         context: Context = BaseApplication.getContext(),
         dir: DIR = DIR.Cache,
         filename: String = random()
-    ): Uri {
+    ): File {
         return of(under(context), of(dir, filename))
     }
 

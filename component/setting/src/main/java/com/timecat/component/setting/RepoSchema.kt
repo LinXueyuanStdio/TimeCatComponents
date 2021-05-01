@@ -1,5 +1,6 @@
 package com.timecat.component.setting
 
+import android.net.Uri
 import java.io.File
 
 /**
@@ -19,6 +20,14 @@ object RepoSchema {
      */
     fun relativeRandomDb(uuid: String = PATH.random()): String {
         return PATH.of(dir = DIR.Database, filename = "$uuid$RecordDBPathSuffix")
+    }
+
+    fun rootDb(url: String): File {
+        return PATH.of(url, relativeRootDb())
+    }
+
+    fun relativeRootDb(): String {
+        return PATH.of(dir = DIR.timecat, filename = FILE.RoomDatabase.fileName)
     }
 
     const val RecordDBPathSuffix = ".timecat_db"

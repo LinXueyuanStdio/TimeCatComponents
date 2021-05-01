@@ -18,7 +18,7 @@ object HomeSchema {
      *
      * /storage/emulated/0/Android/data/<PackageName>/files/Temp/uuid.tmp
      */
-    fun randomTemp(): Uri {
+    fun randomTemp(): File {
         return PATH.overOf(dir = DIR.Temp, filename = "${PATH.random()}$TempSuffix")
     }
 
@@ -27,7 +27,7 @@ object HomeSchema {
      *
      * /storage/emulated/0/Android/data/<PackageName>/files/Database/uuid.timecat_db
      */
-    fun randomDb(uuid: String = PATH.random()): Uri {
+    fun randomDb(uuid: String = PATH.random()): File {
         return PATH.overOf(filename = RepoSchema.relativeRandomDb(uuid))
     }
 
