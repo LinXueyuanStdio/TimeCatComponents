@@ -91,16 +91,6 @@ public class Navi {
         return this;
     }
 
-    public Navi beforAction(@Nullable @UiThread Action action) {
-        delegate.beforAction(action);
-        return this;
-    }
-
-    public Navi beforStartAction(@Nullable Action action) {
-        delegate.beforStartAction(action);
-        return this;
-    }
-
     public Navi afterStartAction(@Nullable Action action) {
         delegate.afterStartAction(action);
         return this;

@@ -2,9 +2,9 @@ apply from: "${project.rootDir}/gradle/library_header.gradle"
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api "com.timecat.identity:resources:1.0.0"
-    api "com.timecat.identity:skin:1.0.1"
-    api "com.timecat.extend:arms:1.0.0"
+    api rootProject.ext.timecat["identity-Resource"]
+    api rootProject.ext.timecat["component-SelfSkin"]
+    api rootProject.ext.timecat["component-SelfArms"]
 
     api 'skin.support:skin-support-appcompat:4.0.6'         // skin-support 基础控件支持
     api 'skin.support:skin-support-design:4.0.6'            // skin-support-design material design 控件支持[可选]

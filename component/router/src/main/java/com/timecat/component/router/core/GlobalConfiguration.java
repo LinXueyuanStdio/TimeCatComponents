@@ -23,7 +23,6 @@ import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.integration.ConfigModule;
 import com.xiaojinzi.component.Component;
 import com.xiaojinzi.component.Config;
-import com.xiaojinzi.component.impl.application.ModuleManager;
 
 import java.util.List;
 
@@ -109,7 +108,7 @@ public class GlobalConfiguration implements ConfigModule {
         // 你也可以让框架
         if (RouteDebug.debug) {
             // 框架还带有检查重复的路由和重复的拦截器等功能,在 `debug` 的时候开启它
-            ModuleManager.getInstance().check();
+            Component.check();
         }
     }
 }

@@ -415,10 +415,8 @@ fun Context.getVideoResolution(path: String): Point? {
     var point = try {
         val retriever = MediaMetadataRetriever()
         retriever.setDataSource(path)
-        val width =
-            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH).toInt()
-        val height =
-            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT).toInt()
+        val width = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)!!.toInt()
+        val height = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)!!.toInt()
         Point(width, height)
     } catch (ignored: Exception) {
         null
@@ -429,10 +427,8 @@ fun Context.getVideoResolution(path: String): Point? {
             val fd = contentResolver.openFileDescriptor(Uri.parse(path), "r")?.fileDescriptor
             val retriever = MediaMetadataRetriever()
             retriever.setDataSource(fd)
-            val width =
-                retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH).toInt()
-            val height =
-                retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT).toInt()
+            val width = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)!!.toInt()
+            val height = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)!!.toInt()
             point = Point(width, height)
         } catch (ignored: Exception) {
         }
@@ -467,7 +463,7 @@ fun Context.getDuration(path: String): Int? {
         val retriever = MediaMetadataRetriever()
         retriever.setDataSource(path)
         Math.round(
-            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION).toInt() / 1000f
+            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)!!.toInt() / 1000f
         )
     } catch (ignored: Exception) {
         null
