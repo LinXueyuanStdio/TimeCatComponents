@@ -22,6 +22,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.Registry;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -38,7 +39,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
  * ================================================
@@ -167,7 +167,12 @@ public class CommonGlideImageLoaderStrategy implements BaseImageLoaderStrategy<C
     }
 
     @Override
-    public void applyGlideOptions(Context context, GlideBuilder builder) {
-        Timber.w("applyGlideOptions");
+    public void applyGlideOptions(@androidx.annotation.NonNull Context context, @androidx.annotation.NonNull GlideBuilder builder) {
+
+    }
+
+    @Override
+    public void registerComponents(@androidx.annotation.NonNull Context context, @androidx.annotation.NonNull Glide glide, @androidx.annotation.NonNull Registry registry) {
+
     }
 }
