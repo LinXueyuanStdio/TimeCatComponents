@@ -4,8 +4,11 @@ apply plugin: 'kotlin-android'
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.androidx_lib["design"]
+
     api rootProject.ext.timecat["component-CommonStatic"]
     api rootProject.ext.timecat["component-SelfArms"]
+
     api rootProject.ext.dependencies["kotlin-stdlib"]
     api 'com.tencent:mmkv:1.2.9'
 }
